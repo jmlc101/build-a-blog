@@ -4,22 +4,15 @@
 
 <h1>Build A Blog</h1>
 
-<hr />
-
 {% if 1 == 0 %}
     <p>No Blog Entry yet</p>
 {% else %}
     {% if blogs %}
     {% for blog in blogs %}
-        <h2>{{blog.title}}</h2>
+        <a href="/display?id={{blog.id}}">{{blog.title}}</a>
         <p>{{blog.body}}</p>
     {% endfor %}
     {% endif %}
-
-    
-
-
-
 {% endif %}
 
 {% endblock %}

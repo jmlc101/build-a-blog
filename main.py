@@ -43,9 +43,19 @@ def newpost():
         new_blog = Blog(title, body)
         db.session.add(new_blog)
         db.session.commit()
-        
-        return redirect('/')
+        id = new_blog.id
+        id = str(id)
+        return redirect('/display?id='+id)
     return render_template('newpost.html', title="Build A Blog!")
+
+@app.route('/display')
+def display():
+    id = request.args.get('id')
+    blog = Blog.query.filter_by(id=id).first()
+    blog_title = blog.title
+    blog_body = blog.body
+    return render_template('display.html', title="display blog here", blog_title=blog_title, blog_body=blog_body)
+
 
 
 
