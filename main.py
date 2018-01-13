@@ -20,14 +20,16 @@ class Blog(db.Model):
         self.title = title
         self.body = body
 
-tasks = []
+
 @app.route('/', methods=['POST', 'GET'])
 def index():
-    
-    testblock = Blog.query.first()
-    blog_titles = "hello"
-    #bodys = 
-    return render_template('blog.html',title="Build A Blog!", testblock=testblock)
+    blog_titles = []
+    bodys = []
+    blogs = Blog.query.filter(Blog.id > 0).all()
+    for blog in blogs:
+        blog_titles.append(blog.title)
+        bodys.append(blog.body)
+    return render_template('blog.html',title="Build A Blog!", blogs=blogs, blog_titles=blog_titles, bodys=bodys)
 
 
 @app.route('/newpost', methods=['POST', 'GET'])

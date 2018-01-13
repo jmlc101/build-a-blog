@@ -6,22 +6,18 @@
 
 <hr />
 
-{% if testblock %}
-{{testblock}}
-{% endif %}
-
-
-{% if 0 == 0 %}
-<p>No Blog Entry yet</p>
+{% if 1 == 0 %}
+    <p>No Blog Entry yet</p>
 {% else %}
+    {% if blogs %}
+    {% for blog in blogs %}
+        <h2>{{blog.title}}</h2>
+        <p>{{blog.body}}</p>
+    {% endfor %}
+    {% endif %}
 
     
-        {% for blog_title in blog_titles %}
-            {% for body in bodys %}
-            <h2>{{blog_title}}</h2>
-            <p>{{body}}</p>
-            {% endfor %}
-        {% endfor %}
+
 
 
 {% endif %}
