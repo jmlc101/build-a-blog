@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<h1>Add a Blog Entry</h1>
+<form method='post'>
+    <label>Title:
+        <input type="text" name="title" />
+    </label>
+    <label>
+        New Task:
+        <input type="text" name='body' />
+    </label>
+    <input type="submit" value='Add body' />
+</form>
+
+<hr />
+
+{% if tasks|length == 0 %}
+<p>No tasks yet</p>
+{% else %}
+
+    <ul>
+        {% for task in tasks %}
+        <li>{{task}}</li>
+        {% endfor %}
+    </ul>
+
+{% endif %}
+
+{% endblock %}
