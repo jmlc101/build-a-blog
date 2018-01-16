@@ -26,10 +26,17 @@ def index():
     blog_titles = []
     bodys = []
     blogs = Blog.query.filter(Blog.id > 0).all()
+    
+    # TODO - Try doing this a more complex way, as the bonus suggests.
+    #flip blogs list around, the simple way
+    flipped_blogs = []
+    for blog in reversed(blogs):
+        flipped_blogs.append(blog)
+
     for blog in blogs:
         blog_titles.append(blog.title)
         bodys.append(blog.body)
-    return render_template('blog.html',title="Build A Blog!", blogs=blogs, blog_titles=blog_titles, bodys=bodys)
+    return render_template('blog.html',title="Build A Blog!", blogs=flipped_blogs, blog_titles=blog_titles, bodys=bodys)
 
 
 @app.route('/newpost', methods=['POST', 'GET'])

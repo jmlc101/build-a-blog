@@ -1,18 +1,20 @@
 {% extends "base.html" %}
 
 {% block content %}
-
 <h1>Build A Blog</h1>
 
+
+<div id="box">
 {% if 1 == 0 %}
     <p>No Blog Entry yet</p>
 {% else %}
     {% if blogs %}
     {% for blog in blogs %}
-        <a href="/display?id={{blog.id}}">{{blog.title}}</a>
+        <h3><a href="/display?id={{blog.id}}">{{blog.title}}</a></h3>
         <p>{{blog.body}}</p>
     {% endfor %}
     {% endif %}
 {% endif %}
+</div>
 
 {% endblock %}
