@@ -5,8 +5,8 @@
 
 
 <div id="box">
-{% if 1 == 0 %}
-    <p>No Blog Entry yet</p>
+{% if not blogs %}
+    <p>No Blog Entry(s) Yet.</p> <!-- TODO - Lets change this into a flash message? -->
 {% else %}
     {% if blogs %}
     {% for blog in blogs %}
