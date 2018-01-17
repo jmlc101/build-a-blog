@@ -10,12 +10,17 @@
             <input type="text" name="title" />
         </label>
         <br>
+        <br> <!-- Try to remove all br tags with CSS -->
         <label>
             Your new blog:
             <input class='textarea' type="textarea" name='body' />
         </label>
+        <br>
+        <br>
         <input type="submit" value='Add Entry' />
+        <div class='error'>{{error}}</div>
     </form>
 </div>
+
 
 {% endblock %}

@@ -69,3 +69,6 @@ a:hover, a:focus, a:active {
     height: 120px;
     overflow: scroll;
 }
+.error {
+	color: red;
+}

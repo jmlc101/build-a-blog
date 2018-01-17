@@ -20,7 +20,6 @@ class Blog(db.Model):
         self.title = title
         self.body = body
 
-
 @app.route('/', methods=['POST', 'GET'])
 def index():
     blog_titles = []
@@ -47,12 +46,16 @@ def newpost():
     if request.method == 'POST':
         title = request.form['title']
         body = request.form['body']
-        new_blog = Blog(title, body)
-        db.session.add(new_blog)
-        db.session.commit()
-        id = new_blog.id
-        id = str(id)
-        return redirect('/display?id='+id)
+        if (title == '') or (body == ''): # TODO - come up with better validation tech.
+            error = 'Please enter "Title" and "Content" for new blog entry...'
+            return render_template('newpost.html', title="Build A Blog!", error=error) # TODO - rewrite this using Flash Messages.
+        else:
+            new_blog = Blog(title, body)
+            db.session.add(new_blog)
+            db.session.commit()
+            id = new_blog.id
+            id = str(id)
+            return redirect('/display?id='+id)
     return render_template('newpost.html', title="Build A Blog!")
 
 @app.route('/display')
