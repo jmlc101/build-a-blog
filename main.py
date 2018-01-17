@@ -14,7 +14,7 @@ class Blog(db.Model):
 
     id = db.Column(db.Integer, primary_key=True)
     title = db.Column(db.String(120))
-    body = db.Column(db.String(120))
+    body = db.Column(db.String(1000))
 
     def __init__(self, title, body):
         self.title = title
@@ -40,6 +40,8 @@ def index():
 
 @app.route('/newpost', methods=['POST', 'GET'])
 def newpost():
+    # TODO - Need validation to make sure body is string under 1000 characters, ad db.Column specifies above.
+
     # TODO - If either the blog title or blog body is left empty in the new post form, 
     #           the form is rendered again, with a helpful error message and 
     #           any previously-entered content in the same form inputs
